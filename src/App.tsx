@@ -11,12 +11,14 @@ import AdminNotes from "./pages/admin/AdminNote";
 import GroupedInterests from "./pages/admin/GroupedInterest";
 
 import MainLayout from "./layout/MainLayout";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <Routes>
       <Route element={<PublicRoute />}>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Route>
 
       <Route element={<ProtectedRoute />}>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
@@ -67,6 +67,9 @@ function Login() {
           {isSubmitting ? "Logging in..." : "Login"}
         </button>
       </form>
+      <p>
+        Don't have an account? <Link to="/register">Register</Link>
+      </p>
     </main>
   );
 }

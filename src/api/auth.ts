@@ -5,6 +5,16 @@ interface LoginCredentials {
   email: string;
   password: string;
 }
+export interface RegisterInput {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export const register = async (data: RegisterInput) => {
+  const response = await api.post("/auth/register", data);
+  return response.data;
+};
 
 export const login = async (
   credentials: LoginCredentials
