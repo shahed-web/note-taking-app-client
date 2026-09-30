@@ -1,12 +1,16 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+
 import ProtectedRoute from "./routes/protectedRoute";
+import PublicRoute from "./routes/publicRoutes";
+import AdminRoute from "./routes/adminRoute";
+
 import Login from "./pages/login";
 import Notes from "./pages/Notes";
-import AdminRoute from "./routes/adminRoute";
-import PublicRoute from "./routes/publicRoutes";
 import AdminUsers from "./pages/admin/AdminUser";
 import AdminNotes from "./pages/admin/AdminNote";
 import GroupedInterests from "./pages/admin/GroupedInterest";
+
+import MainLayout from "./layout/MainLayout";
 
 function App() {
   return (
@@ -16,23 +20,20 @@ function App() {
       </Route>
 
       <Route element={<ProtectedRoute />}>
-        <Route path="/notes" element={<Notes />} />
+        <Route element={<MainLayout />}>
+          <Route path="/notes" element={<Notes />} />
 
-        <Route element={<AdminRoute />}>
-            <Route
-              path="/admin/users"
-              element={<AdminUsers />}
-            />
-            <Route
-                path="/admin/notes"
-                element={<AdminNotes />}
-              />
+          <Route element={<AdminRoute />}>
+            <Route path="/admin/users" element={<AdminUsers />} />
+
+            <Route path="/admin/notes" element={<AdminNotes />} />
+
             <Route
               path="/admin/users/interests"
               element={<GroupedInterests />}
-              />
+            />
+          </Route>
         </Route>
-        
       </Route>
 
       <Route path="*" element={<Navigate to="/notes" replace />} />
